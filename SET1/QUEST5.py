@@ -25,7 +25,9 @@
 
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 import requests
-
+#  In this solution the asset was created via Stellar Laboratory and the issuer is directly paying the account
+#  The correct way would be to create the Asset establishing a trustline via code with a distribution account
+#  And making the payment from the distribution account, but you get the idea looking at the code
 keypair=Keypair.from_secret("SCMQBGOH3WVQAIEYIUXCJRKO4BUYJX726R4NSUXYJCDYEWQAH2DJJ6HD")
 issuer=Keypair.from_secret("SCPBX4R6WCBD3KRR4YFVTHZ5V5ZUEJR2YZQIGZUHGHOK5ZPARDH3W43F")
 public=issuer.public_key
