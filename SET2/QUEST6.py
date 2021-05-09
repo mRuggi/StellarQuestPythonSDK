@@ -38,7 +38,7 @@ tx= (
 		base_fee=100) 
 		
 		.append_begin_sponsoring_future_reserves_op(accounttocreate.public_key)
-		.append_create_account_op(accounttocreate.public_key,"0")
+		.append_create_account_op(accounttocreate.public_key,"1")
 		.append_end_sponsoring_future_reserves_op(accounttocreate.public_key)
 		.build()
 )
