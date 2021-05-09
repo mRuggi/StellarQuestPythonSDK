@@ -29,7 +29,7 @@ import requests
 
 keypair=Keypair.from_secret("SAEPT3H2H3RNJIRLVYC5USEGTHHY4IXAYWNSVSIU2WHHR3JE2BYCQXOG")
 XLM=Asset.native()
-predicate=ClaimPredicate.predicate_not(ClaimPredicate.predicate_before_absolute_time(1609113600))
+predicate=ClaimPredicate.predicate_not(ClaimPredicate.predicate_before_absolute_time(1620584737))
 claimant= Claimant(keypair.public_key,predicate)
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
