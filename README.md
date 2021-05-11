@@ -5,3 +5,5 @@
  [SET1](https://mruggi.github.io/StellarQuestPythonSDK/SET1/)
  
  [SET2](https://mruggi.github.io/StellarQuestPythonSDK/SET2/)
+ 
+ [SET3](https://mruggi.github.io/StellarQuestPythonSDK/SET3/)
