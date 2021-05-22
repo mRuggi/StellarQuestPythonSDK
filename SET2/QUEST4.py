@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  AddSigner.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,15 +22,15 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset,ClaimPredicate,Claimant
 import requests
 
-
-keypair=Keypair.from_secret("SAEPT3H2H3RNJIRLVYC5USEGTHHY4IXAYWNSVSIU2WHHR3JE2BYCQXOG")
+keypair=Keypair.from_secret("YOURSECRET")
 XLM=Asset.native()
-predicate=ClaimPredicate.predicate_not(ClaimPredicate.predicate_before_absolute_time(1620584737))
-claimant= Claimant(keypair.public_key,predicate)
+
+predicate=ClaimPredicate.predicate_not(ClaimPredicate.predicate_before_absolute_time(1620584737)) #after quest 5
+claimant= Claimant(keypair.public_key,predicate) #you need to create a claimant object
+
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
 tx= (

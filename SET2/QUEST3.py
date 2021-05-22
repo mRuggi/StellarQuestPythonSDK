@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  AddSigner.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,19 +22,19 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
-keypair=Keypair.from_secret("SAEPT3H2H3RNJIRLVYC5USEGTHHY4IXAYWNSVSIU2WHHR3JE2BYCQXOG")
-feepayer=Keypair.random()
+keypair=Keypair.from_secret("YOURSECRET")
+
+feepayer=Keypair.random() #random fee payer account funded by friendbot
 
 url = 'https://friendbot.stellar.org'
 response = requests.get(url, params={'addr': feepayer.public_key})
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
-tx= (
+tx= (         #this will be the transaction envelope we'll use for fee bump
 	TransactionBuilder(
 		source_account = server.load_account(account_id=keypair.public_key), 
 		network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
@@ -42,12 +42,12 @@ tx= (
 		.append_payment_op(keypair.public_key,"1","XLM") 
 		.build()
 )
-tx.sign(keypair.secret)
+tx.sign(keypair.secret) #needs to be signed and then wrapped
 
 fee_bump_tx = TransactionBuilder.build_fee_bump_transaction(
     fee_source=feepayer,
     base_fee=200,
-    inner_transaction_envelope=tx, 
+    inner_transaction_envelope=tx, #set the previous transaction as inner envelope
     network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
 
 )

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  payment.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -25,8 +25,8 @@
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
-keypair = Keypair.from_secret("SCAZDJRQR5RBUYUHOVTECTSBAOFXD7KHZ47SLII7FHHCN362P5C7EPLB")
-bumpto = 0 #the int number you need to bump to is hidden in a riddle, look at the resources
+keypair = Keypair.from_secret("YOURSECRET")
+bumpto = 0 #the int number you need to bump to is hidden in a riddle, look at the resources!!
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
 tx= (

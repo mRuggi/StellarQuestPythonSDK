@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  payment.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -25,11 +25,11 @@
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
-#python has a lot of methods and libraries to get the sha256 of x
+#python has a lot of methods and libraries to get the sha256 of hashx
 #also in this quest you need to find the correct hashx :)
-keypair = Keypair.from_secret("SCAZDJRQR5RBUYUHOVTECTSBAOFXD7KHZ47SLII7FHHCN362P5C7EPLB")
+keypair = Keypair.from_secret("YOURSECRET")
 print(keypair.public_key)
-hashx = b'mruggi' #encoded version
+hashx = b'mruggi' #binary string
 sha256="05917dddc0143703e4407477b9dea70c0b646734789ff812d2d0b4382b7d3485" #sha256 of hashx
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")

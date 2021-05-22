@@ -22,4 +22,5 @@ Here I'll upload all the Set 2 Stellar Quest Solution
 [QUEST7 code](https://github.com/mRuggi/StellarQuestPythonSDK/blob/main/SET2/QUEST7.py)
 
 [QUEST8 Download](https://mruggi.github.io/StellarQuestPythonSDK/SET2/QUEST8.py) --
-[QUEST8 code](https://github.com/mRuggi/StellarQuestPythonSDK/blob/main/SET2/QUEST8.py)
+[QUEST8 code](https://github.com/mRuggi/StellarQuestPythonSDK/blob/main/SET2/QUEST8.py) --
+[QUEST8 .TOML FILE RUNKIT](https://runkit.com/mruggi/6099639970acff001a96abf2)

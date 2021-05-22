@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  paymentstrictSRT.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -26,13 +26,11 @@ from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 
 SRT=Asset("SRT","GCDNJUBQSX7AJWLJACMJ7I4BC3Z47BQUTMHEICZLE6MU4KQBRYG5JY6B")
 XLM=Asset.native()
-keypair=Keypair.from_secret("SCQJ65ZH5UO35HQ4IRG545F22LJ37Q44G3UDSYFLRACTWJKCULEMC2S3")
-print(keypair.public_key)
+keypair=Keypair.from_secret("YOURSECRET")
+
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
-path=[]
-
-
+path=[] #needs to be a one way path
 
 tx= (
 	TransactionBuilder(
@@ -44,6 +42,7 @@ tx= (
 		.build()
 )
 tx.sign(keypair.secret)
+
 response = server.submit_transaction(tx)
 print("\nTransaction hash: {}".format(response["hash"]))
 print("Premi un tasto per continuare")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  managedata.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,11 +22,10 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
-keypair=Keypair.from_secret("SCMQBGOH3WVQAIEYIUXCJRKO4BUYJX726R4NSUXYJCDYEWQAH2DJJ6HD")
+keypair=Keypair.from_secret("YOURSECRET")
 print(keypair.public_key)
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")

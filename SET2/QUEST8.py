@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  managedata.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,11 +22,10 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
-keypair=Keypair.from_secret("SDDA5F54VYIHJHRJYYXBUGBLOSRTRBHUWUQO6SNBNDFEKEO6JKAKULOE")
+keypair=Keypair.from_secret("YOURSECRET")
 print(keypair.public_key)
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
@@ -36,7 +35,7 @@ tx= (
 		source_account = server.load_account(account_id=keypair.public_key), 
 		network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
 		base_fee=100) 
-		.append_set_options_op(home_domain="untitled-gv618wec110s.runkit.sh")
+		.append_set_options_op(home_domain="untitled-gv618wec110s.runkit.sh") #runkit endpoint for the .toml file
 		.build()
 )
 tx.sign(keypair.secret)

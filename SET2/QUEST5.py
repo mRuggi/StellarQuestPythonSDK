@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  AddSigner.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,10 +22,9 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 
-keypair=Keypair.from_secret("SAEPT3H2H3RNJIRLVYC5USEGTHHY4IXAYWNSVSIU2WHHR3JE2BYCQXOG")
+keypair=Keypair.from_secret("YOURSECRET")
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
 tx= (
@@ -33,7 +32,7 @@ tx= (
 		source_account = server.load_account(account_id=keypair.public_key), 
 		network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
 		base_fee=100) 
-		.append_claim_claimable_balance_op("00000000964f41bd71c844c7e8644d7660dc1119d10ad76e4edd8f9dcd3f83f11a665fd9")
+		.append_claim_claimable_balance_op("00000000964f41bd71c844c7e8644d7660dc1119d10ad76e4edd8f9dcd3f83f11a665fd9") #you can get this in laboratory by exploring the endpoints
 		.build()
 )
 tx.sign(keypair.secret)

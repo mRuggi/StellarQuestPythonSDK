@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  payment.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -25,7 +25,7 @@
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
-keypair=Keypair.from_secret("SCMQBGOH3WVQAIEYIUXCJRKO4BUYJX726R4NSUXYJCDYEWQAH2DJJ6HD")
+keypair=Keypair.from_secret("YOURSECRET")
 print(keypair.public_key)
 receiver="GCXF7WFTCG5TGJLV7H2E5EH2SPF76HFUM3OGDAXDUUACIN4JC6Q6KC34" #anytestnetaccount
 server = Server(horizon_url="https://horizon-testnet.stellar.org")

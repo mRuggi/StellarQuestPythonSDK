@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  quest 1.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,7 +22,6 @@
 #  
 #  
 
-
 from stellar_sdk import Server,Keypair,TransactionBuilder, Network
 import requests
 
@@ -37,7 +36,7 @@ url = 'https://friendbot.stellar.org'
 response = requests.get(url, params={'addr': public})
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
-destinationacc= "GCJ4ELTU7JRN2LIMJXGJYMUIZBJLGB5JWOVIXXS3CGD6RNM4XSL3DYP4"
+destinationacc= "YOURPUBLICKEY"
 
 transaction= (
 	TransactionBuilder(
@@ -53,6 +52,3 @@ response = server.submit_transaction(transaction)
 print("\nTransaction hash: {}".format(response["hash"]))
 print("Premi un tasto per continuare")
 input()
-
-
-

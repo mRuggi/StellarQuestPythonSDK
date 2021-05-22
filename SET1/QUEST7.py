@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  feepay.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,17 +22,20 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
-keypair=Keypair.from_secret("SCMQBGOH3WVQAIEYIUXCJRKO4BUYJX726R4NSUXYJCDYEWQAH2DJJ6HD")
-feepayer=Keypair.random()
+keypair=Keypair.from_secret("YOURSECRET")
+
+feepayer=Keypair.random() #create an account that will pay the fee for you 
 
 url = 'https://friendbot.stellar.org'
 response = requests.get(url, params={'addr': feepayer.public_key})
 
-destination=Keypair.from_secret("SCVFOD53YLRM3EFUVF6SHN7XOQYXVMWT47FQ6NPFDMWMEZTEPC5QS33Z")
+destination=Keypair.random() #create the destination for the payment
+
+url = 'https://friendbot.stellar.org'
+response = requests.get(url, params={'addr': destination.public_key})
 
 server=Server(horizon_url="https://horizon-testnet.stellar.org")
 
@@ -44,8 +47,8 @@ tx= (
 		.append_payment_op(destination.public_key,"1","XLM",source=keypair.public_key) 
 		.build()
 )
-tx.sign(feepayer.secret)
-tx.sign(keypair.secret)
+tx.sign(feepayer.secret) #you need to sign with the feepayer that is the source of the transaction
+tx.sign(keypair.secret) #and with your secret because you're doing the payment
 
 response = server.submit_transaction(tx)
 print("\nTransaction hash: {}".format(response["hash"]))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  AddSigner.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,11 +22,10 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 
-keypair=Keypair.from_secret("SAEPT3H2H3RNJIRLVYC5USEGTHHY4IXAYWNSVSIU2WHHR3JE2BYCQXOG")
-accounttorevoke=Keypair.from_secret("SB35CCZSQR3PA3S5Q6MGYIST6RALBNJ3YDRJYQ7GV6FBAHIFYBIADBEI")
+keypair=Keypair.from_secret("YOURSECRET")
+accounttorevoke=Keypair.from_secret("SB35CCZSQR3PA3S5Q6MGYIST6RALBNJ3YDRJYQ7GV6FBAHIFYBIADBEI") #you just need the public key!!
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  AddSigner.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,12 +22,11 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Signer
 import requests
 
-keypair=Keypair.from_secret("SCMQBGOH3WVQAIEYIUXCJRKO4BUYJX726R4NSUXYJCDYEWQAH2DJJ6HD")
-signer=Signer.ed25519_public_key("GBIEZGSGT5LL2FCVNW5DC7WOD5UNMR32XPBB7F43WAK22CKELBUVMXT7",1)
+keypair=Keypair.from_secret("YOURSECRET")
+signer=Signer.ed25519_public_key("GBIEZGSGT5LL2FCVNW5DC7WOD5UNMR32XPBB7F43WAK22CKELBUVMXT7",1) #anytestnetaccount you have the secret
 print(keypair.public_key)
 print(keypair.secret)
 
@@ -51,10 +50,10 @@ tx1= (
 		source_account = server.load_account(account_id=keypair.public_key), 
 		network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
 		base_fee=100) 
-		.append_payment_op("GBIEZGSGT5LL2FCVNW5DC7WOD5UNMR32XPBB7F43WAK22CKELBUVMXT7","10","XLM") 
+		.append_payment_op("GBIEZGSGT5LL2FCVNW5DC7WOD5UNMR32XPBB7F43WAK22CKELBUVMXT7","10","XLM")  #you can do any operation here
 		.build()
 )
-tx1.sign("SC6WEJRB6FFHYPEKDGERCJFRKHXNOZKKKNP42EU6LN5RI3VSFCPCS5JK")
+tx1.sign("SC6WEJRB6FFHYPEKDGERCJFRKHXNOZKKKNP42EU6LN5RI3VSFCPCS5JK") #sign with the secret of the signer you just added
 response = server.submit_transaction(tx1)
 print("\nTransaction hash: {}".format(response["hash"]))
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  AddSigner.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,16 +22,15 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 import requests
 #  In this solution the asset was created via Stellar Laboratory and the issuer is directly paying the account
 #  The correct way would be to create the Asset establishing a trustline via code with a distribution account
 #  And making the payment from the distribution account, but you get the idea looking at the code
-keypair=Keypair.from_secret("SCMQBGOH3WVQAIEYIUXCJRKO4BUYJX726R4NSUXYJCDYEWQAH2DJJ6HD")
-issuer=Keypair.from_secret("SCPBX4R6WCBD3KRR4YFVTHZ5V5ZUEJR2YZQIGZUHGHOK5ZPARDH3W43F")
+keypair=Keypair.from_secret("YOURSECRET")
+issuer=Keypair.from_secret("SCPBX4R6WCBD3KRR4YFVTHZ5V5ZUEJR2YZQIGZUHGHOK5ZPARDH3W43F") #secret of the issuer
 public=issuer.public_key
-MXLM=Asset("MXLM",public)
+MXLM=Asset("MXLM",public) #create the asset
 
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
@@ -41,7 +40,7 @@ tx= (
 		source_account = server.load_account(account_id=keypair.public_key), 
 		network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
 		base_fee=100) 
-		.append_change_trust_op(MXLM.code,MXLM.issuer) 
+		.append_change_trust_op(MXLM.code,MXLM.issuer) #you need to trust the asset in order to receive it
 		.build()
 )
 tx.sign(keypair.secret)

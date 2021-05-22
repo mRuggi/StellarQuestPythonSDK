@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  AddSigner.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,21 +22,21 @@
 #  
 #  
 
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 
-keypair=Keypair.from_secret("SAEPT3H2H3RNJIRLVYC5USEGTHHY4IXAYWNSVSIU2WHHR3JE2BYCQXOG")
-accounttocreate=Keypair.random()
+keypair=Keypair.from_secret("YOURSECRET")
+
+accounttocreate=Keypair.random() #a random keypair to create the account
 print(accounttocreate.public_key)
 print(accounttocreate.secret)
+
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
 tx= (
 	TransactionBuilder(
 		source_account = server.load_account(account_id=keypair.public_key), 
 		network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
-		base_fee=100) 
-		
+		base_fee=100) 	
 		.append_begin_sponsoring_future_reserves_op(accounttocreate.public_key)
 		.append_create_account_op(accounttocreate.public_key,"1")
 		.append_end_sponsoring_future_reserves_op(accounttocreate.public_key)

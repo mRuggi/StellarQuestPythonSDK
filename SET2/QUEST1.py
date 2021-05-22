@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  quest 1.py
+#  
 #  
 #  Copyright 2021 mRuggi <mRuggi@PC>
 #  
@@ -22,30 +22,28 @@
 #  
 #  
 
-
 from stellar_sdk import Server,Keypair,TransactionBuilder, Network
 import requests
 
-keypair= Keypair.random()
+keypair= Keypair.random()  #fund a random account that'll create yours
 public= keypair.public_key
 secret= keypair.secret
 print("Public Key: " + public)
 print("Secret Seed: " + secret)
 
-
 url = 'https://friendbot.stellar.org'
 response = requests.get(url, params={'addr': public})
 
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
-destinationacc= "GAOCD352ARJ2PQK3YFN7N2LDMETCBAVRQW42VV3DDMGV4UB6K2CVSC6M"
+destinationacc= "YOURSECRET"
 
 transaction= (
 	TransactionBuilder(
 		source_account = server.load_account(account_id=public), 
 		network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE, 
 		base_fee=100) 
-		.add_hash_memo("e3366fcb087bdb2381b7069a19405b748da831c18145eba25654d1092e93ef37")
-		.append_create_account_op(destination=destinationacc, starting_balance="5000") 
+		.add_hash_memo("e3366fcb087bdb2381b7069a19405b748da831c18145eba25654d1092e93ef37")   #add the memo to the transaction
+		.append_create_account_op(destination=destinationacc, starting_balance="5000")  #create the account
 		.build()
 )
 transaction.sign(secret)
@@ -54,5 +52,3 @@ response = server.submit_transaction(transaction)
 print("\nTransaction hash: {}".format(response["hash"]))
 print("Premi un tasto per continuare")
 input()
-
-
