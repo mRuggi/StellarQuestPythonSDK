@@ -21,9 +21,8 @@
 #  MA 02110-1301, USA.
 #  
 #  
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
-import requests
+
 
 keypair=Keypair.from_secret("YOURSECRET")
 issuer=Keypair.from_secret("SCPBX4R6WCBD3KRR4YFVTHZ5V5ZUEJR2YZQIGZUHGHOK5ZPARDH3W43F") #secret of the issuer

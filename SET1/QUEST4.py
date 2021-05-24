@@ -21,9 +21,7 @@
 #  MA 02110-1301, USA.
 #  
 #  
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Signer
-import requests
 
 keypair=Keypair.from_secret("YOURSECRET")
 signer=Signer.ed25519_public_key("GBIEZGSGT5LL2FCVNW5DC7WOD5UNMR32XPBB7F43WAK22CKELBUVMXT7",1) #anytestnetaccount you have the secret

@@ -21,9 +21,8 @@
 #  MA 02110-1301, USA.
 #  
 #  
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
-import requests
+
 
 keypair=Keypair.from_secret("YOURSECRET")
 print(keypair.public_key)

@@ -21,7 +21,6 @@
 #  MA 02110-1301, USA.
 #  
 #  
-
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 
 SRT=Asset("SRT","GCDNJUBQSX7AJWLJACMJ7I4BC3Z47BQUTMHEICZLE6MU4KQBRYG5JY6B")
