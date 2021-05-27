@@ -26,7 +26,8 @@ from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import requests
 
 keypair = Keypair.from_secret("YOURSECRET")
-bumpto = 0 #the int number you need to bump to is hidden in a riddle, look at the resources!!
+bumptohint = b'SOMESTRANGENAMESTARTINGWITHn'#the name you need to find is hidden in a riddle, look at the resources!!
+bumpto =  int("".join(str(b) for b in bumptohint)) #for each byte in the buffer append it to an empty string and convert the result into an integer number
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
 tx= (
