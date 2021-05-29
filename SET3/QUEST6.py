@@ -29,11 +29,6 @@ import requests
 data=open("nameoftheimage.png","rb").read() #open the file (binary read) the image should be of low dimension
 b64=base64.b64encode(data) #encode it into base 64 string binary
 
-b64str=str(b64)[2:] #convert into a normal string removing b'
-print(b64str) #print it
-numdivide=ceil((len(b64str))/128) #every manage data has 2 64bit entry
-numop=numdivide+ceil(numdivide*2/128) #foreach manage data op we add 2 indexing chars
-
 keypair=Keypair.from_secret("YOURSECRET")
 print(keypair.public_key)
 print()
@@ -53,9 +48,20 @@ tx= (
 		base_fee=10000) 	
 )
 
-for i in range(numop):
-	if(i>=0 and i<=9): tx.append_manage_data_op("0"+str(i)+b64str[i*62+i*64:(i+1)*62+i*64],b64str[(i+1)*62+i*64:(i+1)*62+(i+1)*64])
-	else: tx.append_manage_data_op(str(i)+b64str[i*62+i*64:(i+1)*62+i*64],b64str[(i+1)*62+i*64:(i+1)*62+(i+1)*64])
+
+def chunk(text: str, size: int) -> list:
+	""" Split text into chunks of a given size. """
+	return [text[i : i + size] for i in range(0, len(text), size)]
+
+i = 0
+for entry in chunk(b64, 62 + 64):
+	key = f"{i:02d}{entry[:62].decode('utf8')}"
+	value = entry[62:]
+	tx.append_manage_data_op(
+		data_name=key,
+		data_value=value,
+	)
+	i += 1
 	
 txtosign=tx.build()
 txtosign.sign(keypair)
