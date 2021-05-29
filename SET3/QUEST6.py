@@ -3,7 +3,7 @@
 #
 #  
 #  
-#  Copyright 2021 mRuggi <mRuggi@PC>
+#  Copyright 2021 mRuggi <mRuggi@PC>, w00kie (thanks for the elegant way to do the split)
 #  
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 #  
-#  
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import base64
 from math import ceil
@@ -34,7 +33,7 @@ print(keypair.public_key)
 print()
 server = Server(horizon_url="https://horizon-testnet.stellar.org")
 
-#JUST TO SHOW OFF THE ACTUAL SPLIT
+#JUST TO SHOW OFF THE ORIGINAL SPLIT
 for i in range(numop):
 	if(i>=0 and i<=9): print("0"+str(i)+b64str[i*62+i*64:(i+1)*62+i*64])
 	else: print(str(i)+b64str[i*62+i*64:(i+1)*62+i*64])
@@ -48,7 +47,7 @@ tx= (
 		base_fee=10000) 	
 )
 
-
+#/w00kie split
 def chunk(text: str, size: int) -> list:
 	""" Split text into chunks of a given size. """
 	return [text[i : i + size] for i in range(0, len(text), size)]
