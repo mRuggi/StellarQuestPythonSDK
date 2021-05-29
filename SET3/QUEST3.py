@@ -23,7 +23,6 @@
 #  
 
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
-import requests
 
 #python has a lot of methods and libraries to get the sha256 of hashx
 #also in this quest you need to find the correct hashx :)

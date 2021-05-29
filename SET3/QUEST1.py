@@ -23,7 +23,6 @@
 #  
 
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
-import requests
 
 keypair = Keypair.from_secret("YOURSECRET")
 bumptohint = b'SOMESTRANGENAMESTARTINGWITHn'#the name you need to find is hidden in a riddle, look at the resources!!

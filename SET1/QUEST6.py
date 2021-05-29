@@ -23,7 +23,6 @@
 #  
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder,Asset
 
-
 keypair=Keypair.from_secret("YOURSECRET")
 issuer=Keypair.from_secret("SCPBX4R6WCBD3KRR4YFVTHZ5V5ZUEJR2YZQIGZUHGHOK5ZPARDH3W43F")  #Secret of the issuer
 MXLM=Asset("MXLM",issuer.public_key)

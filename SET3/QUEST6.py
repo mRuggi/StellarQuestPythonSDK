@@ -23,7 +23,6 @@
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
 import base64
 from math import ceil
-import requests
 
 data=open("nameoftheimage.png","rb").read() #open the file (binary read) the image should be of low dimension
 b64=base64.b64encode(data) #encode it into base 64 string binary

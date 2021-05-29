@@ -23,7 +23,7 @@
 #  
 
 from stellar_sdk import Keypair,Server,Network,TransactionBuilder
-import requests
+
 #here you can use every operation, you just need to to 100 of them
 keypair = Keypair.from_secret("YOURSECRET")
 bumpto = 0 
